@@ -31,6 +31,8 @@ public class MyView2 extends HorizontalLayout {
         showSentence = new Button("Show Sentence");
         goodWord = new ComboBox<>();
         badWord = new ComboBox<>();
+        goodSentence.setReadOnly(true);
+        badSentence.setReadOnly(true);
 
         goodWord.setLabel("Good Words");
 //        goodWord.setItems("Hi");
@@ -47,8 +49,8 @@ public class MyView2 extends HorizontalLayout {
 
         addGoodWord.addClickListener(event -> {
             String word_in = this.word.getValue();
-            ArrayList out = WebClient.create().post()
-                    .uri("http://127.0.0.1:8080/addGood?word="+ word_in)
+            ArrayList out = WebClient.create().get()
+                    .uri("http://127.0.0.1:8080/addGood/"+ word_in)
                     .retrieve().bodyToMono(ArrayList.class).block();
             goodWord.setItems(out);
             Notification noti = Notification.show("Good Word Add : " + word_in);
@@ -57,8 +59,8 @@ public class MyView2 extends HorizontalLayout {
 
         addBadWord.addClickListener(event -> {
             String word_in = this.word.getValue();
-            ArrayList out = WebClient.create().post()
-                    .uri("http://127.0.0.1:8080/addBad?word="+ word_in)
+            ArrayList out = WebClient.create().get()
+                    .uri("http://127.0.0.1:8080/addBad/"+ word_in)
                     .retrieve().bodyToMono(ArrayList.class).block();
             badWord.setItems(out);
             Notification noti = Notification.show("Bad Word Add : " + word_in);
@@ -67,8 +69,8 @@ public class MyView2 extends HorizontalLayout {
 
         addSentence.addClickListener(event -> {
             String sen_in = this.sentence.getValue();
-            String out = WebClient.create().post()
-                    .uri("http://127.0.0.1:8080/proof?sentence="+ sen_in)
+            String out = WebClient.create().get()
+                    .uri("http://127.0.0.1:8080/proof/"+ sen_in)
                     .retrieve().bodyToMono(String.class).block();
             Notification noti = Notification.show(out);
             noti.setPosition(Notification.Position.BOTTOM_START);
