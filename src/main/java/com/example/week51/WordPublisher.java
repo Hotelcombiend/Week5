@@ -31,13 +31,6 @@ public class WordPublisher implements Serializable {
         return this.words.badWords;
     }
 
-//    @RequestMapping(value = "/addBad", method = RequestMethod.POST)
-//    public ArrayList<String> addBadWord(@RequestParam("word") String s){
-//        this.words.badWords.add(s);
-//        return this.words.badWords;
-//    }
-
-
     @RequestMapping(value = "/delBad/{word}", method = RequestMethod.GET)
     public ArrayList<String> deleteBadWord(@PathVariable("word") String s){
         this.words.badWords.remove(s);
@@ -49,12 +42,6 @@ public class WordPublisher implements Serializable {
         this.words.goodWords.add(s);
         return this.words.goodWords;
     }
-
-//    @RequestMapping(value = "/addGood", method = RequestMethod.POST)
-//    public ArrayList<String> addGoodWord(@RequestParam("word") String s){
-//        this.words.goodWords.add(s);
-//        return this.words.goodWords;
-//    }
 
     @RequestMapping(value = "/delGood/{word}", method = RequestMethod.GET)
     public ArrayList<String> deleteGoodWord(@PathVariable("word") String s){
@@ -99,3 +86,14 @@ public class WordPublisher implements Serializable {
     }
 
 }
+//    @RequestMapping(value = "/addBad", method = RequestMethod.POST)
+//    public ArrayList<String> addBadWord(@RequestParam("word") String s){
+//        this.words.badWords.add(s);
+//        return this.words.badWords;
+//    }
+
+//    @RequestMapping(value = "/addGood", method = RequestMethod.POST)
+//    public ArrayList<String> addGoodWord(@RequestParam("word") String s){
+//        this.words.goodWords.add(s);
+//        return this.words.goodWords;
+//    }
