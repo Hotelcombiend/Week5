@@ -18,10 +18,10 @@ public class WordPublisher implements Serializable {
 
     public WordPublisher() {
         this.words = new Word();
-        this.words.badWords.add("Fuck");
+        this.words.badWords.add("fuck");
         this.words.badWords.add("olo");
-        this.words.goodWords.add("Happy");
-        this.words.goodWords.add("Enjoy");
+        this.words.goodWords.add("happy");
+        this.words.goodWords.add("enjoy");
         this.words.goodWords.add("life");
     }
 // old code#######
